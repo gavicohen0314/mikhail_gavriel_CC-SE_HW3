@@ -30,12 +30,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    services:
-      mongo:
-        image: mongo:latest
-        ports:
-          - 27017:27017
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -55,6 +49,11 @@ jobs:
       - name: Stop Docker Compose
         run: docker-compose down
 
+      - name: Remove Docker Containers and Networks
+        run: |
+          docker container prune -f
+          docker network prune -f
+
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
@@ -70,12 +69,6 @@ jobs:
   query:
     runs-on: ubuntu-latest
     needs: test
-    services:
-      mongo:
-        image: mongo:latest
-        ports:
-          - 27017:27017
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -92,6 +85,14 @@ jobs:
             echo "response: $response" >> response.txt
           done < query.txt
         continue-on-error: true
+
+      - name: Stop Docker Compose
+        run: docker-compose down
+
+      - name: Remove Docker Containers and Networks
+        run: |
+          docker container prune -f
+          docker network prune -f
 
       - name: Upload query results
         uses: actions/upload-artifact@v3
