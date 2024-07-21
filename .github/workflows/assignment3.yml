@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker image with Docker Compose
         run: |
-          docker-compose -f docker-compose.build.yml build
+          docker-compose -f docker-compose.yml build
           echo "image successfully built" >> /tmp/log
 
       - name: Update log file on failure
