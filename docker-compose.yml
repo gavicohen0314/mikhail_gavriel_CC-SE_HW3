@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: always
+
+  books:
+    build: ./books
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+    restart: always
+
