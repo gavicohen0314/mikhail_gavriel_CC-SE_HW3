@@ -1,7 +1,5 @@
 name: assignment3
 
-name: assignment3
-
 on: [push]
 
 jobs:
