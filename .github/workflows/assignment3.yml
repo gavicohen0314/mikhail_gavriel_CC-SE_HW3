@@ -50,12 +50,11 @@ jobs:
         run: docker compose up &
       - name: Check Container Status
         run: |
-          services=$(docker-compose ps --services)
-          for service in $services; do
-            status=$(docker inspect --format='{{.State.Status}}' $(docker-compose ps -q $service))
-            if [ "$status" == "running" ]; then
-              echo $service
-            fi
-          done
+          if [ "$( docker container inspect -f '{{.State.Running}}' books )" && "$( docker container inspect -f '{{.State.Running}}' mongo )" ]; then
+            echo "Container up and running" >> log.txt
+          else
+            echo "Container failed to run" >> log.txt
+            exit 1
+          fi
           
 
