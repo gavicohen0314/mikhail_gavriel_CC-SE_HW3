@@ -50,9 +50,11 @@ jobs:
         run: docker compose up &
       - name: Check Container Status
         run: |
-          docker-compose ps --filter "status=running"
-      - name: Check Container Status 2
-        run: |
-          docker-compose ps --services
+          for service in $services; do
+            status=$(docker inspect --format='{{.State.Status}}' $(docker-compose ps -q $service))
+            if [ "$status" == "running" ]; then
+              echo $service
+            fi
+          done
           
 
