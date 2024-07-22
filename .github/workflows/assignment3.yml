@@ -47,10 +47,10 @@ jobs:
       - name: Load Docker Image
         run: docker load --input book-service-image.tar
       - name: Run Docker Container
-        run: docker compose up &
+        run: docker compose up -d
       - name: Check Container Status
         if: always()
         run: |
-          docker container inspect -f '{{.State.Running}}' books_container
+          docker compose ps
           
 
