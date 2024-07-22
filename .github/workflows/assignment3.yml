@@ -49,6 +49,7 @@ jobs:
       - name: Run Docker Container
         run: docker compose up &
       - name: Check Container Status
+        if: always()
         run: |
           docker compose ps
           if [ "$( docker container inspect -f '{{.State.Running}}' books_container )" && "$( docker container inspect -f '{{.State.Running}}' mongo_container )" ]; then
