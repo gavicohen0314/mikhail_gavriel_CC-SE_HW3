@@ -51,6 +51,6 @@ jobs:
       - name: Check Container Status
         if: always()
         run: |
-          docker ps
+          docker container inspect -f '{{.State.Running}}' books_container
           
 
