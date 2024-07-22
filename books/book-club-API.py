@@ -61,8 +61,8 @@ def invoke_google_books_API(ISBN: str):
             return google_books_data.get("authors", "missing"), google_books_data.get("publisher", "missing"), google_books_data.get("publishedDate", "missing")
         except:
             # If the google api finds no results for the ISBN number, we take that as an invalid ISBN number
-            if response.json()['totalItems'] == 0:
-                jsonify("Error: Invalid ISBN number."), 422
+            if response.json()['totalItems'] == 0 or response.json() == {}:
+                jsonify("Error: Invalid ISBN number."), 400
     except:
         return jsonify("Error: Internal server error."), 500
 

@@ -1,4 +1,3 @@
-import pytest
 import requests
 
 BASE_URL = "http://localhost:5001" 
@@ -29,6 +28,21 @@ books = [
         "authors": "Mel Greene",
         "ISBN": "9780380798490",
         "genre": "Jokes"
+    },
+    {   
+        "title":"The Adventures of Tom Sawyer",
+        "ISBN":"9780195810400",
+        "genre":"Fiction"
+    },
+    {   
+        "title": "I, Robot",
+        "ISBN":"9780553294385",
+        "genre":"Science Fiction"
+    },
+    {   
+        "title": "Second Foundation",
+        "ISBN":"9780553293364",
+        "genre":"Science Fiction"
     }
 ]
 
