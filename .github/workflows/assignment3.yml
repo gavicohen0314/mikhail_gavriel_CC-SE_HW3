@@ -9,3 +9,5 @@ jobs:
       - name: log text
         run: |
           echo 'hi' >> log.txt
+      - name: upload log file
+        uses: actions/upload-artifact@v4
