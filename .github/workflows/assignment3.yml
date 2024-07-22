@@ -50,7 +50,7 @@ jobs:
         run: docker compose up &
       - name: Check Container Status
         run: |
-          docker-compose ps --services --filter "status=running"
+          docker-compose ps --filter "status=running"
       - name: Check Container Status 2
         run: |
           docker-compose ps --services
