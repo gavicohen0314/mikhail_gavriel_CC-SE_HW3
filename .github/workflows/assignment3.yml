@@ -17,13 +17,13 @@ jobs:
           docker build -t book-service ./books && echo "image successfully built" >> log.txt || (echo "image not able to be built" >> log.txt && exit 1)
           docker save book-service -o book-service-image.tar
       - name: Upload Image to GitHub
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: book-service-image
           path: book-service-image.tar
       - name: Upload Log File
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: log-file
           path: log.txt
@@ -61,7 +61,7 @@ jobs:
           fi
       - name: Upload Log File
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: log-file
           path: log.txt
