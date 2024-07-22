@@ -51,6 +51,13 @@ jobs:
       - name: Check Container Status
         if: always()
         run: |
-          docker compose ps
+          running=$(docker-compose ps --services --filter "status=running")
+          services=$(docker-compose ps --services)
+          if [ "$running" == "$services" ]; then
+            echo "Container up and running" >> log.txt
+          else
+            echo "Container failed to run" >> log.txt
+            exit 1
+          fi
           
 
