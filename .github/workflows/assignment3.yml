@@ -51,6 +51,8 @@ jobs:
       - name: Check Container Status
         run: |
           docker-compose ps --services --filter "status=running"
+      - name: Check Container Status 2
+        run: |
           docker-compose ps --services
           
 
