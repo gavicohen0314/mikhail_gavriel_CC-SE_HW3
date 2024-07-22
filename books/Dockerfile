@@ -1,6 +1,6 @@
 FROM python:3.9-slim
 WORKDIR /app
-RUN pip install flaskBUGGGGGGGs
+RUN pip install flask
 RUN pip install jsonschema
 RUN pip install requests
 RUN pip install pymongo
