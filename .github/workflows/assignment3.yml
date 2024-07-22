@@ -59,5 +59,11 @@ jobs:
             echo "Container failed to run" >> log.txt
             exit 1
           fi
+      - name: Upload Log File
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-file
+          path: log.txt
           
 
