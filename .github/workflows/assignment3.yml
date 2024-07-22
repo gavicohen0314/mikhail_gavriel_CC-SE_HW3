@@ -34,3 +34,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+      - name: Load Docker Image
+        run: docker load --input image.tar
+      - name: Run Docker Container
+        run: docker compose up && echo "Container up and running" >> log.txt || (echo "Container failed to run" && exit 1)
+
