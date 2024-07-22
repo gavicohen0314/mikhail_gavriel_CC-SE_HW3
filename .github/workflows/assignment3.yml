@@ -50,7 +50,7 @@ jobs:
         run: docker compose up &
       - name: Check Container Status
         run: |
-          if [ "$( docker container inspect -f '{{.State.Running}}' books )" && "$( docker container inspect -f '{{.State.Running}}' mongo )" ]; then
+          if [ "$( docker container inspect -f '{{.State.Running}}' books_container )" && "$( docker container inspect -f '{{.State.Running}}' mongo_container )" ]; then
             echo "Container up and running" >> log.txt
           else
             echo "Container failed to run" >> log.txt
