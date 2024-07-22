@@ -6,9 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: log text
         run: |
-          echo 'hi' >> log.txt
+          echo "$(date -Iminutes)" >> log.txt
+          echo "Gavriel Cohen, Mikhail Yagudaev" >> log.txt
       - name: upload log file
         uses: actions/upload-artifact@v4
         with:
