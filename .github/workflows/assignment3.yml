@@ -4,6 +4,8 @@ on: push
 
 jobs:
   build:
-    name: log text
-    run: |
-      echo 'hi' >> log.txt
+    runs_on: ubuntu-latest
+    steps:
+      - name: log text
+        run: |
+          echo 'hi' >> log.txt
