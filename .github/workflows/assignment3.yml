@@ -47,5 +47,10 @@ jobs:
       - name: Load Docker Image
         run: docker load --input book-service-image.tar
       - name: Run Docker Container
-        run: docker compose up && echo "Container up and running" >> log.txt || (echo "Container failed to run" && exit 1)
+        run: docker compose up
+      - name: Check Container Status
+        run: |
+          running="$(docker-compose ps --services --filter "status=running")"
+          services="$(docker-compose ps --services)"
+          "$running" == "$services" && echo "Container up and running" >> log.txt || (echo "Container failed to run" >> log.txt && exit 1)
 
