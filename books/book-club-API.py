@@ -15,6 +15,8 @@ ratings_collection = db['ratings']
 counter_collection = db['counter']
 counter_collection.insert_one({"counterID": 1}) # counter to keep track of id assignment
 
+accepted_genres = ['Fiction', 'Children', 'Biography', 'Science', 'Science Fiction', 'Fantasy', 'Other']
+
 # json schema for the book json objects
 book_schema = {
     "type": "object",
@@ -62,7 +64,7 @@ def invoke_google_books_API(ISBN: str):
         except:
             # If the google api finds no results for the ISBN number, we take that as an invalid ISBN number
             if response.json()['totalItems'] == 0 or response.json() == {}:
-                jsonify("Error: Invalid ISBN number."), 400
+                return jsonify("Error: Invalid ISBN number."), 400
     except:
         return jsonify("Error: Internal server error."), 500
 
@@ -151,18 +153,19 @@ def post_book():
             validate(instance=data, schema=book_post_schema)
         except:
             return jsonify("Error: Missing, incorrectly-spelled or extra fields."), 422
-        
+        genre = data.get('genre')
+        if genre not in accepted_genres:
+            return jsonify("Error: Not an acceptable genre."), 422
         ISBN = data.get('ISBN')
         book = books_collection.find_one({'ISBN': ISBN})
         if book:
             return jsonify("Error: Book with this ISBN number already exists."), 422
         
         title = data.get('title')
-        genre = data.get('genre')
         try:
             authors, publisher, publishedDate = invoke_google_books_API(ISBN)
         except:
-            return jsonify("Error: Invalid ISBN number."), 422
+            return invoke_google_books_API(ISBN)
 
         if authors != "missing":
             formatted_authors = authors[0]
