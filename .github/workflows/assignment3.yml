@@ -55,9 +55,9 @@ jobs:
           running=$(docker-compose ps --services --filter "status=running")
           services=$(docker-compose ps --services)
           if [ "$running" == "$services" ]; then
-            echo "Container up and running" >> log1.txt
+            echo "Container up and running" >> log.txt
           else
-            echo "Container failed to run" >> log1.txt
+            echo "Container failed to run" >> log.txt
             exit 1
           fi
       - name: Upload Log File
@@ -65,6 +65,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: log-file
-          path: log1.txt
+          path: log.txt
           
 
