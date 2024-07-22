@@ -8,12 +8,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: log text
+      - name: Log Workflow Start Time
         run: |
           echo "$(date -Iminutes)" >> log.txt
           echo "Gavriel Cohen, Mikhail Yagudaev" >> log.txt
-      - name: upload log file
+      - name: Build the Docker Image
+        run: |
+          docker build -t book-service ./books && echo "image successfully built" >> log.txt || (echo "image not able to be built" >> log.txt && exit 1)
+          docker save book-service -o book-service-image.tar
+      - name: Upload Image to GitHub
         uses: actions/upload-artifact@v4
         with:
-          name: log file
+          name: book-service-image
+          path: book-service-image.tar
+      - name: Upload Log File
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-file
           path: log.txt
