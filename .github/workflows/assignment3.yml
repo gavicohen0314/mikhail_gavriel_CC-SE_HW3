@@ -51,6 +51,6 @@ jobs:
       - name: Check Container Status
         if: always()
         run: |
-          docker compose ps
+          docker ps
           
 
