@@ -51,7 +51,9 @@ def main():
     for book in books:
         response = requests.post(f"{BASE_URL}/books", json=book)
         if response.status_code != 201:
-            print(f'Error code {response.status_code} posting book with title: \'{book['title']}\' and ISBN: \'{book['ISBN']}\'.')
+            title = book['title']
+            ISBN = book['ISBN']
+            print(f'Error code {response.status_code} posting book with title: \'{title}\' and ISBN: \'{ISBN}\'.')
     
     with open('query.txt', 'r') as query_file:
         for query in query_file.readlines:
