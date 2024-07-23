@@ -54,15 +54,15 @@ def main():
             title = book['title']
             ISBN = book['ISBN']
             print(f'Error code {response.status_code} posting book with title: \'{title}\' and ISBN: \'{ISBN}\'.')
-    print(requests.get(f"{BASE_URL}/books").json())
+
     with open('query.txt', 'r') as query_file:
         for query in query_file.readlines():
             print(f'query: {query}')
             response = requests.get(f"{BASE_URL}/books{query}")
             if response.status_code == 200:
-                print(f'response: {response}')
+                print(f'response: {response.json()}')
             else:
-                print(f'error {response.status_code}')
+                print(f'response: error {response.status_code}')
 
 
 if __name__ == '__main__':
