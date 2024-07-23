@@ -54,7 +54,7 @@ def main():
             title = book['title']
             ISBN = book['ISBN']
             print(f'Error code {response.status_code} posting book with title: \'{title}\' and ISBN: \'{ISBN}\'.')
-    
+    print(requests.get(f"{BASE_URL}/books"))
     with open('query.txt', 'r') as query_file:
         for query in query_file.readlines():
             print(f'query: {query}')

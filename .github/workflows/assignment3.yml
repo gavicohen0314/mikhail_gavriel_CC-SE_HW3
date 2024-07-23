@@ -124,3 +124,13 @@ jobs:
         with:
           name: response-file
           path: response.txt
+      - name: Remove image
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.actions.deleteArtifact({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              artifact_id: ${{ steps.artifact-download.outputs.artifact-id }}
+            });
