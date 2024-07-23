@@ -98,29 +98,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-          uses: actions/checkout@v4
-        - name: Download Docker Image
-          uses: actions/download-artifact@v3
-          with:
-            name: book-service-image
-            path: .
-        - name: Load Docker Image
-          run: docker load --input book-service-image.tar
-        - name: Run Docker Container
-          run: |
-            > response.txt
-            docker compose up -d
-        - name: Set Up Python
-          uses: actions/setup-python@v4
-        - name: Install Dependencies
-          run: |
-            python -m pip install --upgrade pip
-            pip install requests
-        - name: Run Queries
-          run: python query.py > response.txt
-        - name: Upload Response File
-          if: always()
-          uses: actions/upload-artifact@v3
-          with:
-            name: response-file
-            path: response.txt
+        uses: actions/checkout@v4
+      - name: Download Docker Image
+        uses: actions/download-artifact@v3
+        with:
+          name: book-service-image
+          path: .
+      - name: Load Docker Image
+        run: docker load --input book-service-image.tar
+      - name: Run Docker Container
+        run: |
+          > response.txt
+          docker compose up -d
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: Run Queries
+        run: python query.py > response.txt
+      - name: Upload Response File
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: response-file
+          path: response.txt
