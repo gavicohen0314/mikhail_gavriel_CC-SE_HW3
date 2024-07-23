@@ -57,8 +57,8 @@ def main():
 
     with open('query.txt', 'r') as query_file:
         for query in query_file.readlines():
+            query = query.strip()
             print(f'query: {query}')
-            print(f"{BASE_URL}/books{query}")
             response = requests.get(f"{BASE_URL}/books{query}")
             if response.status_code == 200:
                 print(f'response: {response.json()}')
