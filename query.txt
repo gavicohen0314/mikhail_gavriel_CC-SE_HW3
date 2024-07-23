@@ -1,0 +1,51 @@
+?authors=Mark Twain
+?authors=Isaac Asimov
+?authors=Anatoly Shcharansky
+?authors=JK Rowling
+?ISBN=9780520343641
+?ISBN=9780385050784
+?ISBN=9780394558783
+?ISBN=9780195810400
+?ISBN=9780553294385
+?ISBN=9780553293364
+?ISBN=0000001111111
+?genre=Fiction
+?genre=Science Fiction
+?genre=Biography
+?genre=Jokes
+?id=1
+?id=2
+?id=3
+?id=4
+?id=5
+?id=6
+?id=7
+?publishedDate=2021-09-21
+?publishedDate=1974
+?publishedDate=1988
+?publishedDate=1977
+?publishedDate=1991-11-01
+?publishedDate=1991-10-01
+?publishedDate=2024-26-26
+?publisher=Univ of California Press
+?publisher=Doubleday Books
+?publisher=Random House (NY)
+?publisher=Oxford University Press
+?publisher=National Geographic Books
+?publisher=Spectra
+?publisher=Test
+?title=Adventures of Huckleberry Finn
+?title=The Best of Isaac Asimov
+?title=Fear No Evil
+?title=The Adventures of Tom Sawyer
+?title=I, Robot
+?title=Second Foundation
+?title=Test
+?ISBN=9780520343641&authors=Mark Twain&genre=Fiction&id=1&publishedDate=2021-09-21&publisher=Univ of California Press&title=Adventures of Huckleberry Finn
+?ISBN=9780385050784&authors=Isaac Asimov&genre=Science Fiction&id=2&publishedDate=1974&publisher=Doubleday Books&title=The Best of Isaac Asimov
+?ISBN=9780394558783&authors=Anatoly Shcharansky&genre=Biography&id=3&publishedDate=1988&publisher=Random House (NY)&title=Fear No Evil
+?ISBN=9780195810400&authors=Mark Twain&genre=Fiction&id=4&publishedDate=1977&publisher=Oxford University Press, USA&title=The Adventures of Tom Sawyer
+?ISBN=9780553294385&authors=Isaac Asimov&genre=Science Fiction&id=5&publishedDate=1991-11-01&publisher=National Geographic Books&title=I, Robot
+?ISBN=9780553293364&authors=Isaac Asimov&genre=Science Fiction&id=6&publishedDate=1991-10-01&publisher=Spectra&title=Second Foundation
+?ISBN=9780553293364&authors=Isaac Asimov&genre=Science Fiction&id=6&publishedDate=1991-10-01&publisher=Spectra&title=Test
+?Test=Test
