@@ -48,7 +48,7 @@ books = [
 
 def main():
     selected_books = books[:3] + books[5:8]
-    for book in books:
+    for book in selected_books:
         response = requests.post(f"{BASE_URL}/books", json=book)
         if response.status_code != 201:
             title = book['title']
@@ -56,7 +56,7 @@ def main():
             print(f'Error code {response.status_code} posting book with title: \'{title}\' and ISBN: \'{ISBN}\'.')
     
     with open('query.txt', 'r') as query_file:
-        for query in query_file.readlines:
+        for query in query_file.readlines():
             print(f'query: {query}')
             response = requests.get(f"{BASE_URL}/books{query}")
             if response.status_code == 200:
