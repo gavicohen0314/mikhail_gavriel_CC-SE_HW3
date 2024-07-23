@@ -126,11 +126,6 @@ jobs:
           path: response.txt
       - name: Remove image
         if: always()
-        uses: actions/github-script@v7
+        uses: geekyeggo/delete-artifact@v2
         with:
-          script: |
-            github.rest.actions.deleteArtifact({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              artifact_id: ${{ steps.artifact-download.outputs.artifact-id }}
-            });
+          name: book-service-image
