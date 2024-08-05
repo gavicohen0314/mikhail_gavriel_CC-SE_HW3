@@ -62,7 +62,7 @@ def test_get_book_by_id():
 
 def test_get_all_books():
     response = requests.get(f"{BASE_URL}/books")
-    assert response.status_code == 200
+    assert response.status_code == 404
     data = response.json()
     assert len(data) == 3
 
